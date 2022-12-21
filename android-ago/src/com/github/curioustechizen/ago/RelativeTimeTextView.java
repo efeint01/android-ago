@@ -170,12 +170,12 @@ public class RelativeTimeTextView extends TextView {
      */
     protected CharSequence getRelativeTimeDisplayString(long referenceTime, long now) {
         long difference = now - referenceTime;
-        return (difference >= 0 &&  difference<=DateUtils.MINUTE_IN_MILLIS) ?
+        return (difference >= 0 && difference<=DateUtils.SECOND_IN_MILLIS) ?
                 getResources().getString(R.string.just_now):
                 DateUtils.getRelativeTimeSpanString(
                         mReferenceTime,
                         now,
-                        DateUtils.MINUTE_IN_MILLIS,
+                        DateUtils.SECOND_IN_MILLIS,
                         DateUtils.FORMAT_ABBREV_RELATIVE);
     }
 
@@ -301,8 +301,6 @@ public class RelativeTimeTextView extends TextView {
                 interval = DateUtils.HOUR_IN_MILLIS;
             } else if (difference > DateUtils.MINUTE_IN_MILLIS) {
                 interval = DateUtils.MINUTE_IN_MILLIS;
-            } else {
-                interval = DateUtils.SECOND_IN_MILLIS;
             }
             rttv.updateTextDisplay();
             rttv.mHandler.postDelayed(this, interval);
