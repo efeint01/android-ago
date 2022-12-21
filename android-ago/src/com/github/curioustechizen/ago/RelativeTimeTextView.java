@@ -301,6 +301,8 @@ public class RelativeTimeTextView extends TextView {
                 interval = DateUtils.HOUR_IN_MILLIS;
             } else if (difference > DateUtils.MINUTE_IN_MILLIS) {
                 interval = DateUtils.MINUTE_IN_MILLIS;
+            } else {
+                interval = DateUtils.SECOND_IN_MILLIS;
             }
             rttv.updateTextDisplay();
             rttv.mHandler.postDelayed(this, interval);
