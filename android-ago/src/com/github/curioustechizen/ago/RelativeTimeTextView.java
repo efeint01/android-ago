@@ -22,7 +22,7 @@ import java.lang.ref.WeakReference;
  */
 public class RelativeTimeTextView extends TextView {
 
-    private static final long INITIAL_UPDATE_INTERVAL = DateUtils.MINUTE_IN_MILLIS;
+    private static final long INITIAL_UPDATE_INTERVAL = DateUtils.SECOND_IN_MILLIS;
 
     private long mReferenceTime;
     private String mPrefix;
@@ -299,6 +299,8 @@ public class RelativeTimeTextView extends TextView {
                 interval = DateUtils.DAY_IN_MILLIS;
             } else if (difference > DateUtils.HOUR_IN_MILLIS) {
                 interval = DateUtils.HOUR_IN_MILLIS;
+            } else if (difference > DateUtils.MINUTE_IN_MILLIS) {
+                interval = DateUtils.MINUTE_IN_MILLIS;
             }
             rttv.updateTextDisplay();
             rttv.mHandler.postDelayed(this, interval);
